@@ -1,0 +1,1 @@
+# ssdc-rm-pubsub-adapter
