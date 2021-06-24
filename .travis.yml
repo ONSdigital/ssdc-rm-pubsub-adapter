@@ -1,0 +1,19 @@
+sudo: required
+
+services:
+  - docker
+
+langauge: go
+
+go:
+  - 1.14.x
+
+script:
+  - make format-check
+  - make build
+  - make test
+  - make docker
+
+branches:
+  only:
+    - master

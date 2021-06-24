@@ -1,0 +1,45 @@
+version: "3.4"
+services:
+  rabbitmq:
+    container_name: rabbitmq-pubsub-adapter-dev
+    image: rabbitmq:3.8-management
+    ports:
+      - "6369:4369"
+      - "46672:25672"
+      - "7671-7672:5671-5672"
+      - "17671-17672:15671-15672"
+      - "17692:15692"
+    environment:
+      - RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq.conf
+    volumes:
+      - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./rabbitmq/definitions.json:/opt/definitions.json
+
+  pubsub-emulator:
+    container_name: pubsub-emulator-pubsub-adapter-dev
+    image: bigtruedata/gcloud-pubsub-emulator
+    ports:
+      - "8539:8539"
+    command: start --host-port 0.0.0.0:8539
+
+  pubsub-adapter:
+    container_name: pubsub-adapter-dev
+    image: eu.gcr.io/ssdc-rm-ci/rm/ssdc-rm-pubsub-adapter
+    environment:
+      - PUBSUB_EMULATOR_HOST=pubsub-emulator-pubsub-adapter-dev:8539
+      - RABBIT_CONNECTION=amqp://guest:guest@rabbitmq-pubsub-adapter-dev:5672/
+      - RABBIT_USERNAME=guest
+      - RABBIT_PASSWORD=guest
+      - RABBIT_HOST=rabbitmq-pubsub-adapter-dev
+      - RABBIT_PORT=5672
+      - RABBIT_VHOST=/
+      - EQ_RECEIPT_PROJECT=project
+      - QUARANTINE_MESSAGE_URL=http://httpbin.org/post
+      - LOG_LEVEL=INFO
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "find", "/tmp/pubsub-adapter-ready", "-mmin", "-1"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 1s
