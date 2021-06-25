@@ -32,18 +32,15 @@ type Configuration struct {
 
 var cfg *Configuration
 var TestConfig = &Configuration{
-	PublishersPerProcessor:           1,
-	ProcessorRestartWaitSeconds:      1,
-	ProcessorStartUpTimeSeconds:      1,
-	ReadinessFilePath:                "/tmp/pubsub-adapter-ready",
-	RabbitConnectionString:           "amqp://guest:guest@localhost:7672/",
-	ReceiptRoutingKey:                "goTestReceiptQueue",
-	UndeliveredRoutingKey:            "goTestUndeliveredQueue",
-	FulfilmentRequestRoutingKey:      "goTestFulfilmentRequestQueue",
-	FulfilmentConfirmationRoutingKey: "goTestFulfilmentConfirmedQueue",
-	EqReceiptProject:                 "project",
-	EqReceiptSubscription:            "rm-receipt-subscription",
-	EqReceiptTopic:                   "eq-submission-topic",
+	PublishersPerProcessor:      1,
+	ProcessorRestartWaitSeconds: 1,
+	ProcessorStartUpTimeSeconds: 1,
+	ReadinessFilePath:           "/tmp/pubsub-adapter-ready",
+	RabbitConnectionString:      "amqp://guest:guest@localhost:7672/",
+	ReceiptRoutingKey:           "goTestReceiptQueue",
+	EqReceiptProject:            "project",
+	EqReceiptSubscription:       "rm-receipt-subscription",
+	EqReceiptTopic:              "eq-submission-topic",
 }
 
 func GetConfig() (*Configuration, error) {
