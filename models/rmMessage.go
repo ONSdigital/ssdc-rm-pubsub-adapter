@@ -5,7 +5,7 @@ import (
 )
 
 type RmPayload struct {
-	Response              *RmResponse            `json:"response,omitempty"`
+	Response *RmResponse `json:"response,omitempty"`
 }
 
 type RmEvent struct {
