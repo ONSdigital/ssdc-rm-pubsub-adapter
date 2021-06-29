@@ -22,7 +22,7 @@ type Configuration struct {
 	RabbitVHost            string `envconfig:"RABBIT_VHOST"  default:"/"`
 	RabbitConnectionString string `json:"-"`
 	EventsExchange         string `envconfig:"RABBIT_EXCHANGE"  default:"events"`
-	ReceiptRoutingKey      string `envconfig:"RECEIPT_ROUTING_KEY"  default:"event.caseProcessor.receipt"`
+	ReceiptRoutingKey      string `envconfig:"RECEIPT_ROUTING_KEY"  default:"events.caseProcessor.response"`
 
 	// PubSub
 	EqReceiptProject      string `envconfig:"EQ_RECEIPT_PROJECT" required:"true"`
