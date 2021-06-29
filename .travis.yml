@@ -6,7 +6,7 @@ services:
 langauge: go
 
 go:
-  - 1.16.x
+  - 1.14.x
 
 script:
   - make format-check
