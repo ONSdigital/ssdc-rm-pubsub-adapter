@@ -17,7 +17,7 @@ services:
 
   pubsub-emulator:
     container_name: pubsub-emulator-pubsub-adapter-dev
-    image: bigtruedata/gcloud-pubsub-emulator
+    image: eu.gcr.io/ssdc-rm-ci/rm/gcloud-pubsub-emulator:latest
     ports:
       - "8539:8539"
     command: start --host-port 0.0.0.0:8539
