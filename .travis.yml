@@ -8,6 +8,9 @@ langauge: go
 go:
   - 1.16.x
 
+before_install:
+  - docker login -u "${DOCKER_GCP_USERNAME}" -p "${DOCKER_GCP_PASSWORD}" "${DOCKER_GCP_REGISTRY}";
+
 script:
   - make format-check
   - make build
