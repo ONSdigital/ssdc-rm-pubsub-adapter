@@ -19,14 +19,13 @@ services:
     container_name: pubsub-emulator-pubsub-adapter-dev
     image: eu.gcr.io/ssdc-rm-ci/rm/gcloud-pubsub-emulator:latest
     ports:
-      - "8539:8539"
-    command: start --host-port 0.0.0.0:8539
+      - "8538:8538"
 
   pubsub-adapter:
     container_name: pubsub-adapter-dev
     image: eu.gcr.io/ssdc-rm-ci/rm/ssdc-rm-pubsub-adapter
     environment:
-      - PUBSUB_EMULATOR_HOST=pubsub-emulator-pubsub-adapter-dev:8539
+      - PUBSUB_EMULATOR_HOST=pubsub-emulator-pubsub-adapter-dev:8538
       - RABBIT_CONNECTION=amqp://guest:guest@rabbitmq-pubsub-adapter-dev:5672/
       - RABBIT_USERNAME=guest
       - RABBIT_PASSWORD=guest

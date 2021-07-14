@@ -28,7 +28,7 @@ unit-test:
 	go test -race ./... -tags=unitTest
 
 run-int-test:
-	PUBSUB_EMULATOR_HOST=localhost:8539 go test -count 1 github.com/ONSdigital/ssdc-rm-pubsub-adapter
+	PUBSUB_EMULATOR_HOST=localhost:8538 go test -count 1 github.com/ONSdigital/ssdc-rm-pubsub-adapter
 
 int-test: down up-dependencies run-int-test down
 
