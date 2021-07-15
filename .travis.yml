@@ -9,7 +9,7 @@ go:
   - 1.16.x
 
 before_install:
-  - docker login -u "${DOCKER_GCP_USERNAME}" --password-stdin "${DOCKER_GCP_PASSWORD}" "${DOCKER_GCP_REGISTRY}";
+  - echo "${DOCKER_GCP_PASSWORD}" | docker login -u "${DOCKER_GCP_USERNAME}" --password-stdin "${DOCKER_GCP_REGISTRY}";
 
 script:
   - make format-check
