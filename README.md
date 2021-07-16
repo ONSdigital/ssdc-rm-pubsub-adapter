@@ -28,7 +28,7 @@ RABBIT_PORT=7672
 RABBIT_USERNAME=guest
 RABBIT_PASSWORD=guest
 EQ_RECEIPT_PROJECT=project
-PUBSUB_EMULATOR_HOST=localhost:8539
+PUBSUB_EMULATOR_HOST=localhost:8538
 EQ_RECEIPT_PROJECT=project
 QUARANTINE_MESSAGE_URL=http://httpbin.org/post
 RABBIT_EXCHANGE=
@@ -60,7 +60,7 @@ This will run the formatter, build and units tests then spin up the dependencies
 ## Debugging the tests
 To run the integration tests in an IDE
  1. Run `make up-dependencies` to start up the dependencies with docker-compose.
- 1. Set the environment variable `PUBSUB_EMULATOR_HOST=localhost:8539` in your IDE run configuration
+ 1. Set the environment variable `PUBSUB_EMULATOR_HOST=localhost:8538` in your IDE run configuration
  1. Run the test in debug mode
 
 ## Formatting
@@ -81,6 +81,6 @@ You can then run `make logs` to tail the logs
 ### Post in a test message
 You can send a test message onto the pubsub emulator with the tools script
 ```sh
-PUBSUB_EMULATOR_HOST=localhost:8539 go run tools/publish_message.go
+PUBSUB_EMULATOR_HOST=localhost:8538 go run tools/publish_message.go
 ```
 You should see the pubsub adapter log that it has processed the message and see the rabbit messages it produced in the rabbit management UI at http://localhost:17672 (login: guest, guest).
