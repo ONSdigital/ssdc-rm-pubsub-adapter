@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: pubsub-adapter
-          image: eu.gcr.io/ssdc-rm-ci/rm/ssdc-rm-pubsub-adapter:latest
+          image: europe-west2-docker.pkg.dev/ssdc-rm-ci/docker/ssdc-rm-pubsub-adapter:latest
           imagePullPolicy: Always
           resources:
             requests:

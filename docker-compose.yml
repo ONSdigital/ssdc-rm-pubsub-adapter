@@ -17,13 +17,13 @@ services:
 
   pubsub-emulator:
     container_name: pubsub-emulator-pubsub-adapter-dev
-    image: eu.gcr.io/ssdc-rm-ci/rm/gcloud-pubsub-emulator:latest
+    image: europe-west2-docker.pkg.dev/ssdc-rm-ci/docker/gcloud-pubsub-emulator:latest
     ports:
       - "8538:8538"
 
   pubsub-adapter:
     container_name: pubsub-adapter-dev
-    image: eu.gcr.io/ssdc-rm-ci/rm/ssdc-rm-pubsub-adapter
+    image: europe-west2-docker.pkg.dev/ssdc-rm-ci/docker/ssdc-rm-pubsub-adapter
     environment:
       - PUBSUB_EMULATOR_HOST=pubsub-emulator-pubsub-adapter-dev:8538
       - RABBIT_CONNECTION=amqp://guest:guest@rabbitmq-pubsub-adapter-dev:5672/

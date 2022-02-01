@@ -10,7 +10,7 @@ down:
 	docker-compose down
 
 docker:
-	docker build -t eu.gcr.io/ssdc-rm-ci/rm/ssdc-rm-pubsub-adapter .
+	docker build -t europe-west2-docker.pkg.dev/ssdc-rm-ci/docker/ssdc-rm-pubsub-adapter .
 
 build:
 	go build -race .
